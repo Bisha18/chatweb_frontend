@@ -1,0 +1,695 @@
+/* Custom CSS Variables for easier theme management */
+:root {
+  --primary-color: #4A90E2; /* A vibrant blue */
+  --secondary-color: #6DC04A; /* A friendly green */
+  --accent-color: #F8C74D; /* A warm yellow/orange */
+  --text-color-dark: #333;
+  --text-color-light: #fff;
+  --bg-light: #F7F9FC; /* Very light blue-gray for main background */
+  --bg-medium: #E3E9F3; /* Slightly darker for message areas */
+  --bg-card: #FFFFFF;
+  --border-color: #DDE5EE; /* Soft border color */
+  --shadow-light: rgba(0, 0, 0, 0.08);
+  --shadow-medium: rgba(0, 0, 0, 0.12);
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --system-message-bg: #FFF3CD;
+  --system-message-text: #664d03;
+
+  /* Font sizes */
+  --font-size-base: 1rem;
+  --font-size-sm: 0.9rem;
+  --font-size-lg: 1.1rem;
+  --font-size-xl: 1.5rem;
+  --font-size-xxl: 2rem;
+}
+
+
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  background-color: var(--bg-light);
+  color: var(--text-color-dark);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Base Styles for Buttons and Inputs */
+button {
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px; /* Slightly more rounded */
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: 600;
+}
+
+button:hover {
+  filter: brightness(1.1); /* Subtle hover effect */
+  transform: translateY(-1px); /* Lift slightly */
+  box-shadow: 0 4px 8px var(--shadow-light);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: calc(100% - 24px); /* Account for padding */
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: var(--font-size-base);
+  box-sizing: border-box; /* Include padding in width */
+  transition: border-color 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+/* Header */
+.header {
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  padding: 18px 25px;
+  text-align: center;
+  box-shadow: 0 4px 10px var(--shadow-medium);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-left-radius: 15px; /* Aesthetic touch */
+  border-bottom-right-radius: 15px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.header button {
+  background-color: #EF4444; /* Brighter red for danger */
+  color: var(--text-color-light);
+  padding: 10px 18px;
+  font-size: var(--font-size-sm);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header button:hover {
+  background-color: #DC2626;
+  transform: translateY(-1px);
+}
+
+/* Page Containers - General Card Style */
+.auth-page,
+.home-page,
+.chat-room-page {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-card);
+  margin: 30px auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px var(--shadow-medium);
+  width: 90%; /* Responsive width */
+  box-sizing: border-box;
+}
+
+/* Auth Page specific styles */
+.auth-page {
+  max-width: 550px;
+  padding: 40px;
+  justify-content: flex-start;
+}
+
+.auth-form h2 {
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: var(--font-size-xxl);
+  font-weight: 700;
+}
+
+.auth-form div {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.auth-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+  font-size: var(--font-size-base);
+}
+
+.auth-form button[type="submit"] {
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  width: 100%;
+  padding: 14px;
+  font-size: var(--font-size-lg);
+  margin-top: 10px;
+}
+
+.auth-form button[type="submit"]:hover {
+  background-color: #377ADF;
+}
+
+.auth-form p {
+  text-align: center;
+  margin-top: 25px;
+  font-size: var(--font-size-sm);
+  color: #666;
+}
+
+.auth-form p button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  padding: 0;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.auth-form p button:hover {
+  color: #377ADF;
+  transform: none; /* Override general button hover */
+  box-shadow: none;
+}
+
+.error-message, .success-message {
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  font-weight: 500;
+}
+
+.error-message {
+  color: var(--error-color);
+  background-color: #FEE2E2; /* Light red background */
+  border: 1px solid var(--error-color);
+}
+
+.success-message {
+  color: var(--success-color);
+  background-color: #DFFFEA; /* Light green background */
+  border: 1px solid var(--success-color);
+}
+
+
+/* Home Page Specifics */
+.home-page {
+  padding: 40px;
+  align-items: stretch;
+  max-width: 900px;
+}
+
+.home-page h2 {
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+}
+
+.create-room {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.create-room h3 {
+  margin-bottom: 20px;
+  color: var(--text-color-dark);
+  font-size: var(--font-size-lg);
+}
+
+.create-room input {
+  width: 250px;
+  margin-right: 15px;
+}
+
+.create-room button {
+  background-color: var(--secondary-color);
+  color: var(--text-color-light);
+  padding: 12px 25px;
+}
+
+.create-room button:hover {
+  background-color: #59A33B;
+}
+
+/* Room List Specifics */
+.room-list-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto 30px auto;
+}
+
+.room-list-container h3 {
+  color: var(--text-color-dark);
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: var(--font-size-lg);
+}
+
+.room-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px var(--shadow-light);
+}
+
+.room-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.room-list li:last-child {
+  border-bottom: none;
+}
+
+.room-list li:hover {
+  background-color: #F0F4F8; /* Lighter hover */
+  transform: translateX(5px);
+}
+
+.room-list li span {
+  font-size: var(--font-size-lg);
+  color: var(--text-color-dark);
+  font-weight: 500;
+}
+
+.room-list li button {
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  padding: 8px 18px;
+  font-size: var(--font-size-sm);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.room-list li button:hover {
+  background-color: #377ADF;
+  transform: translateY(-1px);
+}
+
+/* Chat Room Page Layout */
+.chat-room-page {
+  display: flex;
+  flex-direction: row; /* Default for larger screens */
+  align-items: flex-start;
+  padding: 20px; /* Add padding to the whole container */
+  max-width: 1400px; /* Wider for chat */
+  height: 90vh; /* Make it take more vertical space */
+  box-shadow: none; /* No shadow on the main container */
+  background-color: transparent; /* No background on main container */
+  margin: 20px auto; /* Center the main chat container */
+  gap: 20px; /* Space between chat main and sidebar */
+}
+
+.chat-room-page > div {
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px var(--shadow-medium);
+  height: 100%; /* Fill parent height */
+  box-sizing: border-box;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-main {
+  flex: 3; /* Chat area takes more space */
+  min-width: 60%; /* Ensure it doesn't shrink too much */
+}
+
+.chat-main h2 {
+  text-align: center;
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+}
+
+.online-users-sidebar {
+  flex: 1; /* Sidebar takes remaining space */
+  min-width: 250px; /* Minimum width for sidebar */
+}
+
+
+/* Message List */
+.message-list {
+  flex-grow: 1;
+  overflow-y: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: var(--bg-medium); /* Light background for message area */
+  display: flex;
+  flex-direction: column; /* Ensure messages stack vertically */
+}
+
+.message-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.message-list li {
+  margin-bottom: 12px;
+  padding: 10px 15px;
+  border-radius: 15px; /* Softer rounded corners */
+  max-width: 85%; /* Slightly increased max width */
+  word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 5px var(--shadow-light);
+  font-size: var(--font-size-base);
+  animation: fadeIn 0.3s ease-out; /* Subtle message appear animation */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.message-list li.my-message {
+  background-color: #D7F8D0; /* Lighter green for my messages */
+  align-self: flex-end;
+  margin-left: auto;
+  color: var(--text-color-dark);
+  border-bottom-right-radius: 5px; /* Tail effect */
+}
+
+.message-list li.other-message {
+  background-color: var(--bg-card); /* White for others' messages */
+  align-self: flex-start;
+  margin-right: auto;
+  color: var(--text-color-dark);
+  border-bottom-left-radius: 5px; /* Tail effect */
+}
+
+.message-list li.system-message {
+  background-color: var(--system-message-bg);
+  color: var(--system-message-text);
+  text-align: center;
+  margin: 8px auto;
+  font-style: italic;
+  font-size: var(--font-size-sm);
+  max-width: 70%;
+  box-shadow: none; /* No shadow for system messages */
+  border-radius: 8px; /* Regular border radius */
+}
+
+.message-list .sender-info {
+  font-weight: 700;
+  font-size: 0.8em; /* Slightly smaller for sender */
+  margin-bottom: 5px;
+  color: var(--primary-color);
+}
+
+.message-list .my-message .sender-info {
+  color: var(--secondary-color); /* Green for my sender name */
+}
+
+.message-list .message-text {
+  font-size: var(--font-size-base);
+  line-height: 1.4;
+  color: inherit; /* Inherit color from parent li */
+}
+
+.message-list .message-timestamp {
+  font-size: 0.7em; /* Even smaller for timestamp */
+  color: #999;
+  margin-top: 6px;
+  text-align: right;
+  align-self: flex-end; /* Align timestamp to the right within the bubble */
+}
+
+/* Message Input */
+.message-input {
+  display: flex;
+  margin-top: auto; /* Push to bottom of chat-main */
+  gap: 10px; /* Space between input and button */
+}
+
+.message-input input {
+  flex-grow: 1;
+  border-radius: 25px; /* Pill shape */
+  padding: 14px 20px;
+}
+
+.message-input button {
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  border-radius: 25px; /* Pill shape */
+  padding: 14px 25px;
+  font-size: var(--font-size-base);
+}
+
+.message-input button:hover {
+  background-color: #377ADF;
+}
+
+/* Online Users List */
+.online-users-list {
+  padding: 25px;
+}
+
+.online-users-list h3 {
+  text-align: center;
+  color: var(--text-color-dark);
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+}
+
+.online-users-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.online-users-list li {
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  background-color: #EBF5FE; /* Lighter primary color tint */
+  border: 1px solid #C6E0F8;
+  border-radius: 8px;
+  font-size: var(--font-size-sm);
+  color: #2F69A6;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.online-users-list li::before {
+  content: '•'; /* Online dot */
+  color: var(--secondary-color);
+  font-size: 1.5em;
+  margin-right: 8px;
+  line-height: 1; /* Align dot vertically */
+}
+
+/* Typing Indicator */
+.typing-indicator {
+  font-size: var(--font-size-sm);
+  color: #666;
+  margin-top: 10px;
+  height: 20px; /* Reserve space to prevent layout shifts */
+  text-align: center;
+  font-style: italic;
+}
+
+/* Loading Screen */
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: var(--font-size-xl);
+  color: var(--primary-color);
+  background-color: var(--bg-light);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .chat-room-page {
+    flex-direction: column; /* Stack chat and users list vertically */
+    height: auto;
+    max-height: unset; /* Remove max-height constraint */
+    overflow-y: auto;
+    padding: 15px;
+  }
+
+  .chat-main {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 25px; /* Space between chat and users list */
+  }
+
+  .online-users-sidebar {
+    width: 100%;
+    margin-top: 0; /* Adjust margin as it's now stacked */
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 12px 15px;
+  }
+  .header h1 {
+    margin-bottom: 10px;
+    font-size: var(--font-size-xl);
+  }
+  .header button {
+    padding: 8px 15px;
+    font-size: 0.85rem;
+  }
+
+  .auth-page,
+  .home-page {
+    width: 98%;
+    margin: 15px auto;
+    padding: 25px;
+    box-shadow: none; /* Remove box-shadow on smaller screens for cleaner look */
+  }
+
+  .chat-room-page > div {
+    box-shadow: none; /* Remove box-shadow from internal chat components on small screens */
+  }
+
+  .create-room input {
+    width: calc(100% - 100px); /* Adjust for full width on mobile */
+    margin-bottom: 15px;
+    margin-right: 0;
+  }
+  .create-room button {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .room-list-container {
+    max-width: 100%;
+    padding: 0; /* Remove internal padding */
+  }
+
+  .message-input {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .message-input input {
+    width: 100%;
+    margin-right: 0;
+  }
+  .message-input button {
+    width: 100%;
+  }
+
+  .message-list li {
+    max-width: 95%; /* Allow messages to take more width */
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --font-size-base: 0.95rem;
+    --font-size-sm: 0.85rem;
+    --font-size-lg: 1rem;
+    --font-size-xl: 1.3rem;
+    --font-size-xxl: 1.8rem;
+  }
+
+  .auth-page,
+  .home-page,
+  .chat-room-page {
+    padding: 20px;
+  }
+
+  .auth-form input,
+  .auth-form button,
+  .create-room input,
+  .create-room button {
+    font-size: var(--font-size-base);
+    padding: 10px;
+  }
+
+  .message-input input,
+  .message-input button {
+    padding: 10px;
+    font-size: var(--font-size-base);
+  }
+
+  .message-list li {
+    padding: 8px 12px;
+  }
+  .message-list .sender-info {
+    font-size: 0.75em;
+  }
+  .message-list .message-timestamp {
+    font-size: 0.65em;
+  }
+}```
+
+---
+
+### **How to Apply:**
+
+1.  **Replace `src/index.css`:** Copy the content of the "1. `src/index.css` (Updated)" section and replace the entire content of your `src/index.css` file with it.
+2.  **Replace `src/App.css`:** Copy the content of the "2. `src/App.css` (Significantly Updated)" section and replace the entire content of your `src/App.css` file with it.
+3.  **Run your development server:**
+    ```bash
+    npm run dev
+    ```
+
+You should now see a much more visually appealing and modern chat application! The design changes include:
+
+*   **Softer Colors:** A more pleasant blue and green, with subtle background shades.
+*   **Rounded Elements:** Buttons, inputs, and message bubbles have softer `border-radius`.
+*   **Subtle Shadows:** `box-shadow` is used to give depth without being overly heavy.
+*   **Improved Typography:** Adjusted font sizes and weights for better readability.
+*   **Transitions:** Hover effects on buttons and inputs are smoother.
+*   **Clearer Layout:** The chat main area and online users sidebar in the chat room page have better visual separation.
+*   **Message Bubble Enhancements:** Different styles for "my messages," "other messages," and "system messages," with subtle "tails."
+*   **Online User List:** Added a small "online dot" for visual clarity.
+*   **Refined Mobile Responsiveness:** The layout adjusts more gracefully on smaller screens, removing unnecessary shadows and adjusting spacing.
+
+Enjoy the new look, bro! Let me know if you want any further tweaks.
