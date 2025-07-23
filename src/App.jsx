@@ -42,10 +42,6 @@ function App() {
   // Effect to re-authenticate or clear user if token is invalid
   useEffect(() => {
     const verifyUser = async () => {
-      // In a more robust application, you'd send this token to your backend's /me endpoint
-      // to verify its validity and fetch up-to-date user info.
-      // For this simple app, we assume the token makes the user "logged in"
-      // since the backend's /me endpoint isn't fully integrated into the App state here.
       setIsLoading(false);
     };
     verifyUser();
