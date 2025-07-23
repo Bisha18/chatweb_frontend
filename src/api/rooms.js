@@ -20,7 +20,6 @@ export const createRoom = async (name, token) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        // 'x-auth-token': token, // Backend room creation doesn't seem to require auth
       },
       body: JSON.stringify({ name }),
     });

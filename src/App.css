@@ -667,29 +667,4 @@ input[type="password"]:focus {
   .message-list .message-timestamp {
     font-size: 0.65em;
   }
-}```
-
----
-
-### **How to Apply:**
-
-1.  **Replace `src/index.css`:** Copy the content of the "1. `src/index.css` (Updated)" section and replace the entire content of your `src/index.css` file with it.
-2.  **Replace `src/App.css`:** Copy the content of the "2. `src/App.css` (Significantly Updated)" section and replace the entire content of your `src/App.css` file with it.
-3.  **Run your development server:**
-    ```bash
-    npm run dev
-    ```
-
-You should now see a much more visually appealing and modern chat application! The design changes include:
-
-*   **Softer Colors:** A more pleasant blue and green, with subtle background shades.
-*   **Rounded Elements:** Buttons, inputs, and message bubbles have softer `border-radius`.
-*   **Subtle Shadows:** `box-shadow` is used to give depth without being overly heavy.
-*   **Improved Typography:** Adjusted font sizes and weights for better readability.
-*   **Transitions:** Hover effects on buttons and inputs are smoother.
-*   **Clearer Layout:** The chat main area and online users sidebar in the chat room page have better visual separation.
-*   **Message Bubble Enhancements:** Different styles for "my messages," "other messages," and "system messages," with subtle "tails."
-*   **Online User List:** Added a small "online dot" for visual clarity.
-*   **Refined Mobile Responsiveness:** The layout adjusts more gracefully on smaller screens, removing unnecessary shadows and adjusting spacing.
-
-Enjoy the new look, bro! Let me know if you want any further tweaks.
+}
