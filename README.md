@@ -56,7 +56,7 @@ A modern, full-stack real-time chat application built with React and Socket.IO. 
 - **Axios** - HTTP client for API requests
 - **CSS3** - Modern styling with flexbox and grid
 
-### Backend (Repository: [chatweb_backend](https://github.com/Bisha18/chatweb_backend))
+### Backend (Repository: [chatweb_backend](https://github.com/Bisha18/chatapp_backend))
 - **Node.js** - JavaScript runtime
 - **Express.js** - Web application framework
 - **Socket.IO** - WebSocket library for real-time features
@@ -342,7 +342,7 @@ This project is actively maintained and open for contributions. Feel free to rep
 
 ## 🔗 Related Repositories
 
-- **Backend**: [chatweb_backend](https://github.com/Bisha18/chatweb_backend)
+- **Backend**: [chatweb_backend](https://github.com/Bisha18/chatapp_backend)
 
 
 Made with ❤️ by Bishal Paul
