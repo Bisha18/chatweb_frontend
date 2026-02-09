@@ -1,29 +1,26 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 function MessageInput({ onSendMessage, onTyping }) {
   const [message, setMessage] = useState('');
   const typingTimerRef = useRef(null);
-  const isTypingRef = useRef(false); // To track if we've already sent 'typing: true'
+  const isTypingRef = useRef(false);
 
   const handleInputChange = (e) => {
     setMessage(e.target.value);
 
-    // Typing indicator logic
     if (!isTypingRef.current) {
       onTyping(true);
       isTypingRef.current = true;
     }
 
-    // Clear previous timer
     if (typingTimerRef.current) {
       clearTimeout(typingTimerRef.current);
     }
 
-    // Set new timer to send 'typing: false' after a delay
     typingTimerRef.current = setTimeout(() => {
       onTyping(false);
       isTypingRef.current = false;
-    }, 1500); // 1.5 seconds after last key press
+    }, 1500);
   };
 
   const handleSubmit = (e) => {
@@ -31,7 +28,6 @@ function MessageInput({ onSendMessage, onTyping }) {
     if (message.trim()) {
       onSendMessage(message.trim());
       setMessage('');
-      // Immediately send typing: false when message is sent
       if (isTypingRef.current) {
         onTyping(false);
         isTypingRef.current = false;
@@ -42,13 +38,11 @@ function MessageInput({ onSendMessage, onTyping }) {
     }
   };
 
-  // Cleanup on unmount
   useEffect(() => {
     return () => {
       if (typingTimerRef.current) {
         clearTimeout(typingTimerRef.current);
       }
-      // Ensure typing status is turned off if component unmounts while typing
       if (isTypingRef.current) {
         onTyping(false);
       }
@@ -56,14 +50,20 @@ function MessageInput({ onSendMessage, onTyping }) {
   }, [onTyping]);
 
   return (
-    <form className="message-input" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="flex gap-2 sm:gap-3">
       <input
         type="text"
         value={message}
         onChange={handleInputChange}
-        placeholder="Type a message..."
+        placeholder="Type something cool..."
+        className="flex-1 px-4 py-3 brutal-border bg-[--color-brutal-gray] font-medium text-sm sm:text-base focus:outline-none focus:bg-white focus:brutal-shadow-md transition-all duration-200"
       />
-      <button type="submit">Send</button>
+      <button
+        type="submit"
+        className="px-6 sm:px-8 py-3 bg-[--color-brutal-green] brutal-border brutal-shadow-md font-black uppercase text-sm sm:text-base hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[3px_3px_0px_var(--color-brutal-black)] active:translate-x-[5px] active:translate-y-[5px] active:shadow-none transition-all duration-100 whitespace-nowrap"
+      >
+        Send 🚀
+      </button>
     </form>
   );
 }

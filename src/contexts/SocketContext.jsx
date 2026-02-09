@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState, useRef } from 'react';
+import { createContext, useContext, useEffect, useState, useRef } from 'react';
 import { io } from 'socket.io-client';
 
 const SocketContext = createContext(null);
@@ -10,7 +10,7 @@ export const SocketProvider = ({ children, backendUrl }) => {
   const [isConnected, setIsConnected] = useState(false);
   const reconnectAttempts = useRef(0);
   const MAX_RECONNECT_ATTEMPTS = 5;
-  const RECONNECT_INTERVAL = 2000; // 2 seconds
+  const RECONNECT_INTERVAL = 2000;
 
   useEffect(() => {
     if (!backendUrl) {
@@ -21,22 +21,22 @@ export const SocketProvider = ({ children, backendUrl }) => {
     let currentSocket = io(backendUrl, {
       reconnectionAttempts: MAX_RECONNECT_ATTEMPTS,
       reconnectionDelay: RECONNECT_INTERVAL,
-      transports: ['websocket', 'polling'], // Ensure compatibility
+      transports: ['websocket', 'polling'],
     });
 
     currentSocket.on('connect', () => {
       console.log('Socket.io connected:', currentSocket.id);
       setIsConnected(true);
-      reconnectAttempts.current = 0; // Reset attempts on successful connection
+      reconnectAttempts.current = 0;
     });
 
     currentSocket.on('disconnect', (reason) => {
       console.log('Socket.io disconnected:', reason);
       setIsConnected(false);
       if (reason === 'io server disconnect') {
-        // The server intentionally disconnected, do not reconnect
+        // Server intentionally disconnected
       } else {
-        // Otherwise, the client will automatically try to reconnect
+        // Client will automatically try to reconnect
       }
     });
 
@@ -57,7 +57,6 @@ export const SocketProvider = ({ children, backendUrl }) => {
 
     setSocket(currentSocket);
 
-    // Cleanup on unmount
     return () => {
       if (currentSocket) {
         currentSocket.disconnect();

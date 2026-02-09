@@ -1,3 +1,4 @@
+
 html, body, #root {
   height: 100%;
   margin: 0;
@@ -5,7 +6,6 @@ html, body, #root {
 }
 
 body {
-  /* For smoother font rendering across browsers */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
